@@ -69,8 +69,14 @@
     if (!audio) return;
 
     key.classList.add('playing');
+    key.classList.add('sound');
     audio.currentTime = 0;
     audio.play();
+
+    key.addEventListener('transitioned', function(e) {
+      key.classList.remove('playing');
+      key.classList.remove('sound');
+    });
   }
 
   const keys = Array.from(document.querySelectorAll('.key'));
